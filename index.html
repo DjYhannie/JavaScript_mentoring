@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+<script type="text/javascript">
+
+//Delivery Date
+while(true){
+    var inputDate = prompt('Enter the Delivey Date:',"MM/dd/yyyy");
+    var convertDate = new Date(inputDate)
+    var now = new Date();
+    if(convertDate && convertDate.getFullYear()<2021 && now<convertDate  && !isNaN(convertDate)){
+        alert("Successful Operation")
+        break;
+    }
+    else if (!convertDate || isNaN(convertDate)) {
+        alert("Invalid Input. Please try again");
+        continue;
+    }else if(now>convertDate){
+        alert("Past is ex!");
+        continue;
+    }
+    else if (!convertDate.getFullYear() < 2021) {
+        alert("You can not plan ahead");
+        continue;
+    } 
+}
+
+
+//correct Answer
+
+function deliveryDate(message = 'Enter a date for delivery'){
+    const input = prompt(message, "MM/dd/YYYY");
+
+    if (!date) deliveryDate('Input is Empty, Enter again')
+    else {
+        const date = new Date(input);
+        if (isNaN(date.getTime())){
+            deliveryDate('It is not a date!');
+        } 
+        else if(date < new Date()){
+            deliveryDate('Date is in the past!')
+        }else if(date.getFullYear() >= 2021){
+            deliveryDate('Date is to far ahead!')
+        } else alert('Successful!')
+    }
+}
+deliveryDate()
+
+
+
+
+//Random Array Sum
+
+function randomNumber(n){
+    let arrayList = [];
+    let number = 0;
+    let min = 0;
+    for (let i=0; i < n; i++){
+        number = Math.floor(Math.random() * 100) + 1;
+        arrayList.push(number);
+    }
+    console.log(arrayList);
+        
+    min = Math.min.apply(null, arrayList);
+    arrayList.splice(arrayList.indexOf(min),1);
+
+    return arrayList.reduce((num1, num2)=>{
+        return num1 + num2;
+    })
+       
+}    
+console.log("Result:" + randomNumber(5));
+
+
+//class solution
+
+function randomIntArraySum(n = 5){
+    let arr = []
+    for (let i = 0; i < n; i++){
+        const r = Math.floor(Math.random() * 100)
+        arr.push(r)
+    }
+    console.log(arr)
+    // arr.sort().shift() another way
+
+    let m = Math.min(...arr)
+    console.log(m)
+    arr.splice(arr.indexOf(m), 1)
+    console.log(arr)
+
+    //simple way to add and array
+    let sum = 0
+    for(let i = 0; i < arr.length; i++ ){
+        sum += arr[i]
+    }
+
+    //using reduce function
+    arr.reduce(function(a,b){return a + b});
+
+    //using reduce with  arrow function
+    let sum = arr.reduce((a,b) => a+b)
+    return sum
+
+
+    //arr.reduce((a,b)=>{console.log(a, b, a+b)} return a+b)
+}
+
+randomIntArraySum()
+
+
+//hellos
+
+let names = new Array(10);
+
+function hellos(){
+    for( let i=0; i < names.length; i++ ){
+        names[i] = prompt("Enter a name:");
+    }
+
+    let results = names.filter(element => element.length > 5);
+    results.forEach(elements =>{
+       console.log(" Hello " + elements.toUpperCase());
+    //    document.write("Hello " + element.toUpperCase() + "<br>");
+    });
+    console.log(results);
+}
+
+hellos();
+
+
+
+//anaother way to solve
+
+function tenNames() {
+    let arr = []
+    for (let i = 0; i < 5; i++) {
+        const n = prompt ('Enter a name', 'John')
+        if (!n) console.error('Input is Empty!')
+        else arr.push(n)  
+    }
+
+    arr.filter(element => element.length > 5)
+        .map(element => element.toUpperCase())
+        .forEach(element => console.log(" Hello" + element));
+
+
+    //another way
+    arr.filter().map().forEach()
+}
+ tenNames()
+
+
+//Shopping Cart
+
+const prices = {
+    "apple": 10,
+    "banana": 25,
+    "mangga": 50,
+    "mangosteen": 80,
+    "chicken": 55,
+    "pork": 42
+}
+
+let cart = {
+    "apple" : 3,
+    "mangga" : 2,
+    "fish" : 1
+}
+
+//to remove a thing from an object
+// delete cart["fish"]
+
+//merge
+const cart2 = {"chicken": 5}
+const globalCart = {...cart, ...cart2}
+
+function computeTotal(cart){
+    let total = 0
+    for (key in cart){
+        const qty = cart[key]
+        console.log(key, qty)
+        let price = prices[key] || 0
+
+        if (!price){
+            console.log("No price");
+            price = 0
+        }
+
+        // let subtotal = price * qty
+
+        let subtotal = !price ? 0 : price * qty
+        console.log(subtotal)
+
+        console.log(key, qty, "p" + price, "p" + subtotal);
+
+        total += subtotal
+    }
+    return total
+    
+
+}
+
+</script>
+    
+</body>
+</html>

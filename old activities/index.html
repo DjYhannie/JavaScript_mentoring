@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <label for="square">Enter Number to get the Area of Square:</label><br>
+    <input type="number" name="" id="square"><br>
+    <label for="circle">Enter Number to get the Area of Circle:</label><br>
+    <input type="number" name="" id="circle"><br><br>
+    <button type="submit" id="display" >Submit</button> -->
+
+    <script>
+        // function Area(shape) {
+        //     switch(shape){
+        //         case "square":
+        //             let number = document.getElementById('square').value;
+        //             return number * number;
+        //         case "circle":
+        //             let radius = document.getElementById('circle').value;
+        //             return Math.PI * radius * radius;
+        //     }
+        // }
+        // console.log("Square:" + Area("square"));
+        // console.log("Circle: " + Area("circle"));
+
+        var side = prompt("Enter a number to get the Area of Square.");
+        var radius = prompt("Enter a the radius");
+        function areaOfSquare(side) {
+
+            // let side = document.getElementById('square').value;
+            if (side < 0 || !side){
+                console.error("This is an Error");
+            }
+            return side* side;
+        }
+        console.log("The Area of the Square: " + areaOfSquare(side));
+        function areaOfCircle(radius) {
+            // let radius = document.getElementById('circle').value;
+            if (radius < 0 || !radius) {
+                console.error("This is an error");
+            }
+            return (Math.PI * radius *radius);
+        }
+        console.log("The Area of a Circle: " + areaOfCircle(radius));
+
+        function compareCircleAndSquare(radius, side){
+            if (areaOfCircle(radius) < areaOfSquare(side)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(compareCircleAndSquare(radius, side));
+        
+    </script>
+</body>
+</html>
